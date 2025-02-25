@@ -1,0 +1,40 @@
+[
+    {
+        "name": "西日本選手権",
+        "lane": [
+            "1 大阪大学A",
+            "2 岸和田",
+            "3 天王寺",
+            "4 富山国際大学A",
+            "5 立命館大学",
+            "6 富山国際大学A"
+        ],
+        "info": "W2X Final A",
+        "time-line": [
+            {
+                "time": "8:00",
+                "name": "W1X Heat"
+            },
+            {
+                "time": "9:00",
+                "name": "M1X Heat"
+            },
+            {
+                "time": "10:00",
+                "name": "W2X Heat"
+            },
+            {
+                "time": "11:00",
+                "name": "M2X Heat"
+            },
+            {
+                "time": "12:00",
+                "name": "W4X+ Heat"
+            },
+            {
+                "time": "13:00",
+                "name": "W4X+ Heat"
+            }
+        ]
+    }
+]
