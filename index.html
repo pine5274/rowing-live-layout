@@ -25,7 +25,6 @@
   <p id="local-time" class="local-time"></p>
 </body>
 <script>
-//ローカルのjsonもしくはGASのAPIのURL（Google Spreadsheetを使う場合は各自変更してください。）
 const endpoint = "info.json";
 
 //APIを使って非同期データを取得する
@@ -44,16 +43,6 @@ function remoteScore() {
     document.getElementById("lane-four").innerHTML = data[0]['lane'][3];
     document.getElementById("lane-five").innerHTML = data[0]['lane'][4];
     document.getElementById("lane-six").innerHTML = data[0]['lane'][5];
-    // document.getElementById("single_nameleft").innerHTML = data[0]['name'];
-    // document.getElementById("single_teamleft").innerHTML = data[0]['team'];
-    // document.getElementById("single_prtextleft").innerHTML = data[0]['status'];
-    // document.getElementById("single_numberright").innerHTML = data[1]['score'];
-    // document.getElementById("single_nameright").innerHTML = data[1]['name'];
-    // document.getElementById("single_teamright").innerHTML = data[1]['team'];
-    // document.getElementById("single_prtextright").innerHTML = data[1]['status'];
-    // document.getElementById("camera_left").innerHTML = data[0]['id'];
-    // document.getElementById("camera_right").innerHTML = data[1]['id'];
-    //inputタグそれぞれに取得したデータを設定
   }
 }
 remoteScore();
