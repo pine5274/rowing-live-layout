@@ -25,40 +25,49 @@
   <p id="local-time" class="local-time"></p>
 </body>
 <script>
-const endpoint = "info.json";
+  const endpoint = "info.json";
 
-//APIを使って非同期データを取得する
-function remoteScore() {
-  const xhr = new XMLHttpRequest();
-  xhr.open("GET", endpoint);
-  xhr.send();
-  xhr.onreadystatechange = function() {
-    //JSONから配列に変換
-    const data = JSON.parse(xhr.response);
-    console.log(data);
-    document.getElementById("race-info").innerHTML = data[0]['info'];
-    document.getElementById("lane-one").innerHTML = data[0]['lane'][0];
-    document.getElementById("lane-two").innerHTML = data[0]['lane'][1];
-    document.getElementById("lane-three").innerHTML = data[0]['lane'][2];
-    document.getElementById("lane-four").innerHTML = data[0]['lane'][3];
-    document.getElementById("lane-five").innerHTML = data[0]['lane'][4];
-    document.getElementById("lane-six").innerHTML = data[0]['lane'][5];
+  //APIを使って非同期データを取得する
+  function remoteScore() {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", endpoint);
+    xhr.send();
+    xhr.onreadystatechange = function() {
+      //JSONから配列に変換
+      const data = JSON.parse(xhr.response);
+      console.log(data);
+      document.getElementById("race-info").innerHTML = data[0]['info'];
+      document.getElementById("lane-one").innerHTML = data[0]['lane'][0];
+      document.getElementById("lane-two").innerHTML = data[0]['lane'][1];
+      document.getElementById("lane-three").innerHTML = data[0]['lane'][2];
+      document.getElementById("lane-four").innerHTML = data[0]['lane'][3];
+      document.getElementById("lane-five").innerHTML = data[0]['lane'][4];
+      document.getElementById("lane-six").innerHTML = data[0]['lane'][5];
+    }
   }
-}
-remoteScore();
-window.setInterval(remoteScore, 5000);
+
+  remoteScore();
+  window.setInterval(remoteScore, 5000);
 </script>
 <script>
-    function timeSet() {
-        var localTime = new Date();
-        var hour = localTime.getHours();
-        var min = localTime.getMinutes();
-        if (hour < 10) { hour = "0" + hour; }
-        if (min < 10) { min = "0" + min; }
-        document.getElementById("local-time").innerHTML = (hour + ':' + min)
+function timeSet() {
+    const localTime = new Date();
+    let hour = localTime.getHours();
+    let min = localTime.getMinutes();
+    if (hour < 10) { 
+      hour = `0${hour}`;
     }
-    timeSet();
-    window.setInterval(timeSet, 3000);
+
+    if (min < 10) {
+      min = `0${min}`;
+    }
+
+    const time = `${hour}:${min}`;
+    document.getElementById("local-time").innerHTML = time;
+}
+
+timeSet();
+window.setInterval(timeSet, 3000);
 </script>
 
 </html>
