@@ -21,7 +21,7 @@ html {
 
 .next-race {
     position: fixed;
-    top: 90px;
+    top: 80px;
     left: 200px;
     color: #cbb4fd;
     font-size: 50px;
@@ -29,10 +29,9 @@ html {
 
 .race-info {
     position: fixed;
-    font-size: 30px;
-    top: 170px;
+    top: 100px;
     left: 200px;
-    font-size: 60px;
+    font-size: 100px;
 }
 
 .time-line {
@@ -41,7 +40,7 @@ html {
     margin: 0;
     position: fixed;
     font-size: 30px;
-    left: 1420px;
+    left: 1340px;
 }
 .time-line-name {
     width: 300px;
@@ -49,7 +48,7 @@ html {
     margin: 0;
     position: fixed;
     font-size: 30px;
-    left: 1595px;
+    left: 1510px;
 }
 .t-one {
     top: calc(0 * (100% - 170px) / 6 + 150px);
@@ -77,22 +76,22 @@ html {
     font-size: 40px;
 }
 .lane-one {
-    top: calc(0 * (100% - 500px) / 6 + 400px);
+    top: calc(0 * (100% - 550px) / 6 + 390px);
 }
 .lane-two {
-    top: calc(1 * (100% - 500px) / 6 + 400px);
+    top: calc(1 * (100% - 550px) / 6 + 390px);
 }
 .lane-three {
-    top: calc(2 * (100% - 500px) / 6 + 400px);
+    top: calc(2 * (100% - 550px) / 6 + 390px);
 }
 .lane-four {
-    top: calc(3 * (100% - 500px) / 6 + 400px);
+    top: calc(3 * (100% - 550px) / 6 + 390px);
 }
 .lane-five {
-    top: calc(4 * (100% - 500px) / 6 + 400px);
+    top: calc(4 * (100% - 550px) / 6 + 390px);
 }
 .lane-six {
-    top: calc(5 * (100% - 500px) / 6 + 400px);
+    top: calc(5 * (100% - 550px) / 6 + 390px);
 }
 
 .local-setting {
@@ -102,8 +101,8 @@ html {
     line-height: 26px;
     position: fixed;
     color: #ffffff;
-    left: 815px;
-    top: 888px;
+    left: 817px;
+    top: 928px;
     letter-spacing: 1px;
 }
   
@@ -113,7 +112,7 @@ html {
     color: #ffffff;
     position: fixed;
     left: 970px;
-    top: 850px;
+    top: 890px;
     font-variant-numeric: tabular-nums;
 }
 

@@ -15,59 +15,69 @@
 <body>
   <img class='board' src="image/bg.png" alt=""> <!-- スコアボードのデザインの画像 -->
   <p id="race-info" class="race-info"></p>
-  <p id="lane-one" class="lane lane-one"></p>
-  <p id="lane-two" class="lane lane-two"></p>
-  <p id="lane-three" class="lane lane-three"></p>
-  <p id="lane-four" class="lane lane-four"></p>
-  <p id="lane-five" class="lane lane-five"></p>
-  <p id="lane-six" class="lane lane-six"></p>
+  <p id="lane-1" class="lane lane-one"></p>
+  <p id="lane-2" class="lane lane-two"></p>
+  <p id="lane-3" class="lane lane-three"></p>
+  <p id="lane-4" class="lane lane-four"></p>
+  <p id="lane-5" class="lane lane-five"></p>
+  <p id="lane-6" class="lane lane-six"></p>
+  <p id="lane" class="lane-2"></p>
   <p class="local-setting">Local Time<br>JST</p>
   <p id="local-time" class="local-time"></p>
 </body>
 <script>
   const endpoint = "info.json";
 
-  //APIを使って非同期データを取得する
-  function remoteScore() {
-    const xhr = new XMLHttpRequest();
-    xhr.open("GET", endpoint);
-    xhr.send();
-    xhr.onreadystatechange = function() {
-      //JSONから配列に変換
-      const data = JSON.parse(xhr.response);
-      console.log(data);
-      document.getElementById("race-info").innerHTML = data[0]['info'];
-      document.getElementById("lane-one").innerHTML = data[0]['lane'][0];
-      document.getElementById("lane-two").innerHTML = data[0]['lane'][1];
-      document.getElementById("lane-three").innerHTML = data[0]['lane'][2];
-      document.getElementById("lane-four").innerHTML = data[0]['lane'][3];
-      document.getElementById("lane-five").innerHTML = data[0]['lane'][4];
-      document.getElementById("lane-six").innerHTML = data[0]['lane'][5];
+  // APIからデータを取得して更新
+  async function fetchScore() {
+    try {
+      const response = await fetch(endpoint);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      updateScoreboard(data[0]);
+    } catch (error) {
+      console.error("Failed to fetch score data:", error);
     }
   }
 
-  remoteScore();
-  window.setInterval(remoteScore, 5000);
-</script>
-<script>
-function timeSet() {
+  // スコアボードを更新
+  function updateScoreboard(data) {
+    document.getElementById("race-info").innerHTML = data.info;
+    const lanesString = data.lane.join("&nbsp;&nbsp;&nbsp;&nbsp; ");
+    document.getElementById("lane").innerHTML = lanesString;
+    adjustFontSize();
+  }
+
+  // 現在時刻を更新
+  function updateTime() {
     const localTime = new Date();
-    let hour = localTime.getHours();
-    let min = localTime.getMinutes();
-    if (hour < 10) { 
-      hour = `0${hour}`;
-    }
+    const hour = String(localTime.getHours()).padStart(2, '0');
+    const min = String(localTime.getMinutes()).padStart(2, '0');
+    document.getElementById("local-time").innerHTML = `${hour}:${min}`;
+  }
 
-    if (min < 10) {
-      min = `0${min}`;
-    }
+  function adjustFontSize() {
+      let fontSize = 30; // 初期フォントサイズ
+      const lane = document.getElementById("lane");
+      lane.style.fontSize = `${fontSize}px`;
 
-    const time = `${hour}:${min}`;
-    document.getElementById("local-time").innerHTML = time;
-}
+      // 要素の幅を超えないようにフォントサイズを調整
+      while (lane.scrollWidth > lane.offsetWidth && fontSize > 10) {
+        fontSize -= 1;
+        lane.style.fontSize = `${fontSize}px`;
+      }
+  }
 
-timeSet();
-window.setInterval(timeSet, 3000);
+  // 初期化
+  function init() {
+    fetchScore();
+    updateTime();
+    setInterval(fetchScore, 5000); // スコアを5秒ごとに更新
+    setInterval(updateTime, 3000); // 時刻を3秒ごとに更新
+  }
+
+  init();
 </script>
-
 </html>

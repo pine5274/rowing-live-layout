@@ -31,30 +31,48 @@ html {
 }
 
 .lane {
-    width: 300px;
+    width: 310px;
+    height: 60px;
+    margin: 0;
+    position: fixed;
+    font-size: 28px;
+    top: 1040px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1;
+}
+
+.lane-2 {
+    width: calc(100% - 360px);
     height: 60px;
     margin: 0;
     position: fixed;
     font-size: 30px;
-    top: 1022px;
+    left: 45px;
+    top: 1035px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1;
 }
 .lane-one {
-    left: calc(0 * (100% - 400px) / 6 + 60px);
+    left: calc(0 * (100% - 60px) / 6 + 60px);
 }
 .lane-two {
-    left: calc(1 * (100% - 400px) / 6 + 60px);
+    left: calc(1 * (100% - 60px) / 6 + 60px);
 }
 .lane-three {
-    left: calc(2 * (100% - 400px) / 6 + 60px);
+    left: calc(2 * (100% - 60px) / 6 + 60px);
 }
 .lane-four {
-    left: calc(3 * (100% - 400px) / 6 + 60px);
+    left: calc(3 * (100% - 60px) / 6 + 60px);
 }
 .lane-five {
-    left: calc(4 * (100% - 400px) / 6 + 60px);
+    left: calc(4 * (100% - 60px) / 6 + 60px);
 }
 .lane-six {
-    left: calc(5 * (100% - 400px) / 6 + 60px);
+    left: calc(5 * (100% - 60px) / 6 + 60px);
 }
 
 .local-setting {
@@ -65,7 +83,7 @@ html {
     position: fixed;
     color: #ffffff;
     left: 1608px;
-    top: 1000px;
+    top: 996px;
     letter-spacing: 1px;
 }
   
@@ -75,7 +93,7 @@ html {
     color: #ffffff;
     position: fixed;
     right: 14px;
-    top: 962px;
+    top: 958px;
     font-variant-numeric: tabular-nums;
 }
 
