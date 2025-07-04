@@ -59,7 +59,7 @@
 
   // スコアボードを更新
   function updateScoreboardFromPoint(data) {
-    document.getElementById("race-info").innerHTML = data[0].info;
+    document.getElementById("race-info").innerHTML = data[0]['boat'] + " " + data[0]['class'];;
     const lanesString = data.map(item => `${item["lane-number"]} ${item.team}`).join("&nbsp;&nbsp;&nbsp;&nbsp; ");
     document.getElementById("lane").innerHTML = lanesString;
     adjustFontSize();
