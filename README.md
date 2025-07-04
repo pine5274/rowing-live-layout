@@ -12,4 +12,8 @@ Rowing Live Layout はローイングのレース配信上でレーンなどの�
 
 ### データを編集する方法
 
+https://docs.google.com/spreadsheets/d/1P8aBJycm8RIpDR1cMSlkfBLp_O9jRW2BNofpSbIFNb4/edit?usp=sharing
+
 フォルダ内にある`info.json`を編集することでデータの更新ができます。`""`は削除せず記入・保存してください。テキストエディタを持っていない場合は <a href="https://azure.microsoft.com/ja-jp/products/visual-studio-code/">VSCode</a>などをインストールすると良いでしょう。
+
+

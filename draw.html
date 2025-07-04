@@ -41,6 +41,7 @@
 <script>
 //ローカルのjsonもしくはGASのAPIのURL（Google Spreadsheetを使う場合は各自変更してください。）
 const endpoint = "info.json";
+const point = "https://script.google.com/macros/s/AKfycbw3sXeqPDRPIjpkMmkBlAviya1C82UIprzQRMX31am4-vVVbrOQvAj9_x9tIj6m9jiuLg/exec";
 
 //APIを使って非同期データを取得する
 function remoteScore() {
@@ -72,8 +73,54 @@ function remoteScore() {
     document.getElementById("lane-six").innerHTML = data[0]['lane'][5];
   }
 }
-remoteScore();
-window.setInterval(remoteScore, 5000);
+
+function remoteScoreFromPoint() {
+  const xhr = new XMLHttpRequest();
+  xhr.open("GET", point);
+  xhr.send();
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      //JSONから配列に変換
+      const data = JSON.parse(xhr.response);
+      console.log(data);
+
+      // ISO文字列を日本時間の "H:mm" 形式に変換する関数
+      function toJSTTime(str) {
+        if (!str) return "";
+        const date = new Date(str);
+        // JSTに変換
+        const jstHour = (date.getUTCHours() + 9) % 24;
+        const hour = String(jstHour); // 0埋めしない
+        const min = String(date.getUTCMinutes()).padStart(2, '0');
+        return `${hour}:${min}`;
+      }
+
+      document.getElementById("t-one").innerHTML = toJSTTime(data[0]['time-line']);
+      document.getElementById("t-two").innerHTML = toJSTTime(data[1]['time-line']);
+      document.getElementById("t-three").innerHTML = toJSTTime(data[2]['time-line']);
+      document.getElementById("t-four").innerHTML = toJSTTime(data[3]['time-line']);
+      document.getElementById("t-five").innerHTML = toJSTTime(data[4]['time-line']);
+      document.getElementById("t-six").innerHTML = toJSTTime(data[5]['time-line']);
+      document.getElementById("t-name-one").innerHTML = data[0]['time-line-name'];
+      document.getElementById("t-name-two").innerHTML = data[1]['time-line-name'];
+      document.getElementById("t-name-three").innerHTML = data[2]['time-line-name'];
+      document.getElementById("t-name-four").innerHTML = data[3]['time-line-name'];
+      document.getElementById("t-name-five").innerHTML = data[4]['time-line-name'];
+      document.getElementById("t-name-six").innerHTML = data[5]['time-line-name'];
+      document.getElementById("race-info").innerHTML = data[0]['info'];
+      document.getElementById("lane-one").innerHTML = data[0]['lane-number'] + " " + data[0]['team'];
+      document.getElementById("lane-two").innerHTML = data[1]['lane-number'] + " " + data[1]['team'];
+      document.getElementById("lane-three").innerHTML = data[2]['lane-number'] + " " + data[2]['team'];
+      document.getElementById("lane-four").innerHTML = data[3]['lane-number'] + " " + data[3]['team'];
+      document.getElementById("lane-five").innerHTML = data[4]['lane-number'] + " " + data[4]['team'];
+      document.getElementById("lane-six").innerHTML = data[5]['lane-number'] + " " + data[5]['team'];
+    }
+  }
+}
+remoteScoreFromPoint();
+window.setInterval(remoteScoreFromPoint, 5000);
+// remoteScore();
+// window.setInterval(remoteScore, 5000);
 </script>
 <script>
   function timeSet() {
