@@ -95,7 +95,7 @@ function remoteScoreFromPoint() {
         return `${hour}:${min}`;
       }
 
-      document.getElementById("race-info").innerHTML = data[0]['boat'] + " " + data[0]['class'];;
+      document.getElementById("race-info").innerHTML = data[0]['boat'] + " " + data[0]['class'];
       document.getElementById("t-one").innerHTML = toJSTTime(data[0]['time-line']);
       document.getElementById("t-two").innerHTML = toJSTTime(data[1]['time-line']);
       document.getElementById("t-three").innerHTML = toJSTTime(data[2]['time-line']);
